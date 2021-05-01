@@ -67,7 +67,7 @@ Is syntactic sugar for:
 vars(sys.modules[__name__])["MODULE_LEVEL_CONSTANT"] = 3
 ```
 
-A namespace directive would like this:
+A namespace directive like this:
 
 ```python
 namespace constants:
