@@ -172,7 +172,7 @@ The critical point is that though a `namespace` block is indented and does have 
 
 The `namespace` block just happens to alter the key under which a value is saved into the `dict` of the current object in scope when a name is defined within it, and when it goes out of scope it leaves a bound object behind which serves to delegate attempted attribute access by prepending its name (plus a dot) to the dictionary lookup.
 
-One of the most useful wins that comes out of this (versus nesting `class` statements) is that you can namespace out your methods within a class while still having them actually be methods within that class (not methods for a completely different nested class). Basically, they retain acccess to their implicit first argument (`self` unless you are a heretic).
+One of the most useful wins that comes out of this (versus nesting `class` statements) is that you can namespace out your methods within a class while still having them actually be methods within that class (not methods for a completely different nested class). Basically, they retain acccess to their implicit first argument within the current class (`self` unless you are a heretic).
 
 # more example use-cases
 
