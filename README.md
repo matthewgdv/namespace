@@ -176,7 +176,7 @@ One of the most useful wins that comes out of this (versus nesting `class` state
 
 # more example use-cases
 
-Let's imagine a class that can be constructed from many different sources and can be exported to many different destinations. Regardless of the abstracted implementation details of that class (probably using the factory design pattern or similar) The interface of the class might look something like this:
+Let's imagine a class that can be constructed from many different sources and can be exported to many different destinations. Regardless of the abstracted implementation details of that class (probably using the factory design pattern or similar) the interface of the class might look something like this:
 
 ```python
 from __future__ import annotations
