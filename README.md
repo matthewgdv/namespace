@@ -278,7 +278,7 @@ I think the gain in code clarity here is pretty huge. By grouping together relat
 
 # a small point on python scopes
 
-Though this is a relatively niche situation that relies on the user making some poor choices to begin with (i.e. most people will never see this), there are some rather... nasty quirks inherent to python scoping rules when a variable with the same name is reused across multiple different types of scopes (particularly if a class scope is involved). I will simply drop a link here and leave it at that. The main point I'm making is that using `namespace` avoids these issues altogether since it is not a true scope in the way that class definitions are.
+Though this is a relatively niche situation that relies on the user making some poor choices to begin with (i.e. most people will never see this), there are some rather... nasty quirks inherent to python scoping rules when a variable with the same name is reused across multiple different types of scopes (particularly if a class scope is involved). I will simply drop a link here and leave it at that. The main point I'm making is that `namespace` dodges these issues altogether since it is not a true scope in the way that class definitions are.
 
 http://lackingrhoticity.blogspot.com/2008/08/4-python-variable-binding-oddities.html
 
