@@ -18,7 +18,7 @@ First off, for anyone who is familiar with similar namespace keywords in other l
 
 1) modules
 2) classes
-3) locals
+3) function locals
 
 The proposal is probably best initially explained using some code:
 
