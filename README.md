@@ -2,7 +2,7 @@
 
 In the spirit of the final line in the zen of python:
 
-Namespaces are one honking great idea -- let's do more of those!
+`Namespaces are one honking great idea -- let's do more of those!`
 
 I've decided to write up a proposal I've had churning around in my head for a while now of adding a new soft keyword to the language:
 
