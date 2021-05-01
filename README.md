@@ -86,7 +86,7 @@ vars(sys.modules[__name__])["constants.inner.ANOTHER_CONSTANT"] = "hi"
 
 However, this would come with the added bonus that the non-dynamic method of access using dot-notation:
 
-```
+```python
 constants.NAMESPACED_CONSTANT
 constants.inner.ANOTHER_CONSTANT
 ```
