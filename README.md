@@ -28,9 +28,9 @@ In its simplest form:
 # some_module.py
 
 namespace constants:
-  RETRY_DELAY_SECONDS = 10
-  RETRY_ATTEMPTS = 6
-  ...  # more constants here
+    RETRY_DELAY_SECONDS = 10
+    RETRY_ATTEMPTS = 6
+    ...  # more constants here
   
   
 constants.RETRY_ATTEMPTS == 6  # True
@@ -40,8 +40,8 @@ At this point you're probably asking yourself something along the lines of 'So h
 
 ```python
 class Constants:
-  RETRY_DELAY_SECONDS = 10
-  ...
+    RETRY_DELAY_SECONDS = 10
+    ...
 ```
 
 
@@ -71,10 +71,10 @@ A namespace directive like this:
 
 ```python
 namespace constants:
-  NAMESPACED_CONSTANT = True
+    NAMESPACED_CONSTANT = True
   
-  namespace inner:
-    ANOTHER_CONSTANT = "hi"
+    namespace inner:
+      ANOTHER_CONSTANT = "hi"
 ```
 
 Would be syntactic sugar for:
