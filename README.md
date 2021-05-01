@@ -196,13 +196,13 @@ from credentials import AwsCredentials, AzureCredentials
 class GenericData:
     ...  # class implementation
     
-    def export_to_local_filesystem(self) -> None:
+    def export_to_local_filesystem(self, path: os.PathLike) -> None:
         ...
     
-    def export_to_aws_s3(self) -> None:
+    def export_to_aws_s3(self, path: os.PathLike, bucket_name: str, credentials: AwsCredentials) -> None:
         ...
     
-    def export_to_azure_blob(self) -> None:
+    def export_to_azure_blob(self, path: os.PathLike, container_name: str, credentials: AzureCredentials) -> None:
         ...    
 
     ...  # more export options
@@ -240,13 +240,13 @@ class GenericData:
     ...  # class implementation
 
     namespace export_to:
-        def local_filesystem(self) -> None:
+        def local_filesystem(self, path: os.PathLike) -> None:
             ...
     
-        def aws_s3(self) -> None:
+        def aws_s3(self, path: os.PathLike, bucket_name: str, credentials: AwsCredentials) -> None:
             ...
     
-        def azure_blob(self) -> None:
+        def azure_blob(self, path: os.PathLike, container_name: str, credentials: AzureCredentials) -> None:
             ...
     
         ...  # more export options
