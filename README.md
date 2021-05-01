@@ -86,9 +86,9 @@ However, this would come with the added bonus that the non-dynamic method of acc
 
 Basically, using class blocks for namespacing (by leveraging the syntactic sugar for declaring class attributes within a class block) is ubiquitous in python, but I would argue that this is only the case _precisely_ because we lack a dedicated namespacing mechanism.
 
-'But why...?' I can already hear many readers asking, '...do we need a new (soft) keyword for this when the way it is currently done works perfectly fine?'.
+'But why...?' I can already hear many readers asking, '...do we need a new (soft) keyword for this when class blocks are sufficient and already exist?'.
 
-The point I will try my hardest to convince you of here is that there are potentially some pretty awesome improvements to both **usability** and **clarity** to be had in python namespacing (particularly for classes) that you _didn't even know you wanted_. In addition, I suppose there might also be some performance benefits from not having to create new classes for namespacing purposes, and a more formal declaration of intent by using `namespace` rather than `class`.
+The point I will try my hardest to convince you of here is that there are potentially some pretty awesome improvements to both **usability** and **clarity** to be had in python namespacing (particularly for classes) that you _didn't even know you wanted_. In addition, I suppose there might also be some performance benefits from not having to create new classes for namespacing purposes, and a more explicit declaration of intent by using `namespace` rather than `class`.
 
 # a real example
 
@@ -170,7 +170,9 @@ That is what this proposal ultimately boils down to if you were to summarize it 
 
 The critical point is that though a `namespace` block is indented and does have its own scope, it is not really a true language scope in the same way that a class definition is. Python only has 3 'real' scopes (module, class, function). It can be thought of more like the sort of scope of a `with` or `try` block.
 
-This means that you can namespace out your methods while still having them actually be methods within that class (not methods for a completely different nested class). Basically, they retain acccess to their implicit first argument (`self` unless you are a heretic).
+The `namespace` block just happens to alter the key under which a value is saved into the `dict` of the current object in scope when a name is defined within it, and when it goes out of scope it leaves a bound object behind which serves to delegate attempted attribute access by prepending its name (plus a dot) to the dictionary lookup.
+
+One of the most useful wins that comes out of this (versus nesting `class` statements) is that you can namespace out your methods within a class while still having them actually be methods within that class (not methods for a completely different nested class). Basically, they retain acccess to their implicit first argument (`self` unless you are a heretic).
 
 # more example use-cases
 
@@ -228,7 +230,6 @@ from credentials import AwsCredentials, AzureCredentials
 class GenericData:
     ...  # class implementation
 
-
     namespace export_to:
         def local_filesystem(self) -> None:
             ...
@@ -271,20 +272,6 @@ I think the gain in code clarity here is pretty huge. By grouping together relat
 Though this is a relatively niche situation that relies on the user making some poor choices to begin with (i.e. most people will never see this), there are some rather... nasty quirks inherent to python scoping rules when a variable with the same name is reused across multiple different types of scopes (particularly if a class scope is involved). I will simply drop a link here and leave it at that. The main point I'm making is that using `namespace` avoids these issues altogether since it is not a true scope in the way that class definitions are.
 
 http://lackingrhoticity.blogspot.com/2008/08/4-python-variable-binding-oddities.html
-
-As an example of something that cannot currently be done with nested class scopes but could easily be done with the `namespace` keyword:
-
-```python
-class Outer:
-  class Inner:
-    host
-    user = "ubuntu"
-    
-    # we can access some_attr from here if we want to
-    
-  class AnotherInner:
-    Inner.some_attr
-```
 
 # conclusion
 
