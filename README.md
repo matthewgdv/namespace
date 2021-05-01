@@ -284,7 +284,7 @@ http://lackingrhoticity.blogspot.com/2008/08/4-python-variable-binding-oddities.
 
 # conclusion
 
-I wrote this proposal in a somewhat informal tone on a github repo as something that exists in a weird in-between place that isn't quite a normal-length post on python-ideas, but also isn't actually a full-blown PEP. I would be happy to write a PEP for this if this gained traction. Though for the actual implementation I would need a core dev with knowledge of the python internals to work with me, since I have no experience coding in C, and don't really know enough about the python internals.
+I wrote this proposal in a somewhat informal tone on a github repo as something that exists in a weird in-between place that isn't quite a normal-length post on python-ideas, but also isn't actually a full-blown PEP. I would be happy to write a PEP for this if this gained traction. Though for the actual implementation I would need a core dev, since I have no experience coding in C, and don't really know enough about the python internals.
 
 If there is somewhere better I could cross-post this to please just let me know and I will do so.
 
