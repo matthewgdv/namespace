@@ -72,21 +72,23 @@ A namespace directive like this:
 ```python
 namespace constants:
   NAMESPACED_CONSTANT = True
-  ANOTHER_CONSTANT = "hi"
+  
+  namespace inner:
+    ANOTHER_CONSTANT = "hi"
 ```
 
 Would be syntactic sugar for:
 
 ```python
 vars(sys.modules[__name__])["constants.NAMESPACED_CONSTANT"] = True
-vars(sys.modules[__name__])["constants.ANOTHER_CONSTANT"] = "hi"
+vars(sys.modules[__name__])["constants.inner.ANOTHER_CONSTANT"] = "hi"
 ```
 
 However, this would come with the added bonus that the non-dynamic method of access using dot-notation `constants.MODULE_LEVEL_CONSTANT` would then be actually valid, rather than raising a `NameError: name 'constants' is not defined`. Furthermore, The value actually exists in the module globals, rather than being an attribute on a class that lives within the module globals, which would be the case if we had used a `class` statement.
 
 Basically, using class blocks for namespacing (by leveraging the syntactic sugar for declaring class attributes within a class block) is ubiquitous in python, but I would argue that this is only the case _precisely_ because we lack a dedicated namespacing mechanism.
 
-'But why...?' I can already hear many readers asking, '...do we need a new (soft) keyword for this when class blocks are sufficient and already exist?'.
+'But why...?' I can already hear many voices asking, '...do we need a new (soft) keyword for this when class blocks are sufficient and already exist?'.
 
 The point I will try my hardest to convince you of here is that there are potentially some pretty awesome improvements to both **usability** and **clarity** to be had in python namespacing (particularly for classes) that you _didn't even know you wanted_. In addition, I suppose there might also be some performance benefits from not having to create new classes for namespacing purposes, and a more explicit declaration of intent by using `namespace` rather than `class`.
 
