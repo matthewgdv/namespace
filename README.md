@@ -38,7 +38,7 @@ constants.RETRY_ATTEMPTS == 6  # True
 
 At this point you're probably asking yourself something along the lines of 'So how is this any different from:
 
-```
+```python
 class Constants:
   RETRY_DELAY_SECONDS = 10
   ...
