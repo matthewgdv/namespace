@@ -74,7 +74,7 @@ namespace constants:
     NAMESPACED_CONSTANT = True
   
     namespace inner:
-      ANOTHER_CONSTANT = "hi"
+        ANOTHER_CONSTANT = "hi"
 ```
 
 Would be syntactic sugar for:
