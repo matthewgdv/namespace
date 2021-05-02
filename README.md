@@ -99,6 +99,26 @@ Basically, using class blocks for namespacing (by leveraging the syntactic sugar
 
 The point I will try my hardest to convince you of here is that there are potentially some pretty awesome improvements to both **usability** and **clarity** to be had in python namespacing (particularly for classes) that you _didn't even know you wanted_. In addition, I suppose there might also be some performance benefits from not having to create new classes for namespacing purposes, and a more explicit declaration of intent by using `namespace` rather than `class`.
 
+
+# namespaced instance attributes
+
+The same way that `namespace` blocks can be used in the class declaration to save things into the class `__dict__`, the same thing can be done for instances, to save names to the instance `__dict__`.
+
+For example:
+
+
+```python
+
+class Example:
+    def __init__(self) -> None:
+         namespace self.inner:
+             hi = "Hello World!"
+             
+             
+print(Example.inner.hi)  # NameError: name 'inner' is not defined
+print(Example().inner.hi)  # Hello World!
+```
+
 # a real example
 
 A fairly common design pattern for a libary class with several logical groupings of methods is to separate them out into accessor delegates, which actually implement the methods using a reference to the parent. This makes the class much more usable within an IDE, because rather than getting a huge amount of autocompletion suggestions all at once you instead just get a few small groups, and you can then descend into whichever group of methods you actually care about.
